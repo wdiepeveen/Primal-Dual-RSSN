@@ -5,7 +5,7 @@ Solve manifold-valued image processing problems with a duality-based higher
 order method for non-smooth optimisation.
 
         [1] W. Diepeveen, J. Lellmann.  
-        Duality-based Higher-order Non-smooth Optimization on Manifolds.
+        An Inexact Semi-smooth Newton Method on Riemannian Manifolds with Application to Duality-based Total Variation Denoising.
         arXiv preprint arXiv:2102.10309. 2021 Feb 20.
 
 Setup

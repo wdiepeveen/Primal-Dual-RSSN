@@ -113,7 +113,7 @@ function process_RSSN_comparison_algorithms_S2(λ;postfix="",view_result::Bool=f
    costfig = plot([L;lrcpa[:,1]], [TVp;lrcpa[:,2]], lab="lRCPA")
 
    plot!(costfig,[L;lrssn[:,1]], [TVp;lrssn[:,2]], lab="PD-RSSN (proposed)")
-   plot!(costfig,[0;prior[:,1]], [TVstart;prior[:,2]],lab="")
+   plot!(costfig,[0;prior[:,1]], [TVstart;prior[:,2]],lab="Pre-steps")
    xlims!( (0,L+min(max_xlim,max(length(r_lrssn),round(length(r_lrcpa)/10)))) )
    xlabel!(costfig,"Iterations")
    ylabel!(costfig,"Cost")
@@ -122,7 +122,7 @@ function process_RSSN_comparison_algorithms_S2(λ;postfix="",view_result::Bool=f
 
    scatter!(convfig,lrssn[:,1], lrssn_cRate, markersize=6, lab="PD-RSSN (proposed)")
 
-   scatter!(convfig,[0;prior[:,1]],[NaN;NaN;NaN;prior_cRate], markersize=2, lab="")
+   scatter!(convfig,[0;prior[:,1]],[NaN;NaN;NaN;prior_cRate], markersize=2, lab="Pre-steps")
    xlims!( (0,L+min(max_xlim,max(length(r_lrssn),round(length(r_lrcpa)/10)))) )
    xlabel!(convfig,"Iterations")
    ylabel!(convfig,"q")
@@ -132,7 +132,7 @@ function process_RSSN_comparison_algorithms_S2(λ;postfix="",view_result::Bool=f
 
    plot!(rerrorfig,[L;lrssn[:,1]], [relerror;lrssn[:,3]], yaxis=:log, lab="PD-RSSN (proposed)")
 
-   plot!(rerrorfig,[0;prior[:,1]], [1;prior[:,3]], yaxis=:log, lab="")
+   plot!(rerrorfig,[0;prior[:,1]], [1;prior[:,3]], yaxis=:log, lab="Pre-steps")
    xlims!( (0,L+min(max_xlim,max(length(r_lrssn),round(length(r_lrcpa)/10)))) )
    xlabel!(rerrorfig,"Iterations")
    ylabel!(rerrorfig,L"\epsilon_{rel}")

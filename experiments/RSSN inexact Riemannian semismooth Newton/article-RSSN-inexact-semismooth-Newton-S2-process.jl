@@ -100,37 +100,48 @@ function process_RSSN_inexact_S2(;postfix="",view_result::Bool=true,path::Union{
       end
    end
 
+   cur_colors = get_color_palette(:auto, plot_color(:white), 17)
+   # costfig = plot([0;ϵₗ[:,1]], [TVprior;ϵₗ[:,2]], lab="Pre-steps")
+   #
+   # plot!(costfig, [L;ϵ₁[:,1]], [TVstart;ϵ₁[:,2]], lab="a₁")
 
-   costfig = plot([0;ϵₗ[:,1]], [TVprior;ϵₗ[:,2]], lab="")
-
-   plot!(costfig, [L;ϵ₁[:,1]], [TVstart;ϵ₁[:,2]], lab="a₁")
+   costfig = plot([L;ϵ₁[:,1]], [TVstart;ϵ₁[:,2]], lab="a₁")
 
    plot!(costfig, [L;ϵ₂[:,1]], [TVstart;ϵ₂[:,2]], lab="a₂")
 
-   plot!(costfig, [L;ϵ₃[:,1]], [TVstart;ϵ₃[:,2]], lab="a₃")
+   plot!(costfig, [L;ϵ₃[:,1]], [TVstart;ϵ₃[:,2]], color = cur_colors[4], lab="a₃")
+
+   plot!(costfig, [0;ϵₗ[:,1]], [TVprior;ϵₗ[:,2]], color = cur_colors[3], lab="Pre-steps")
    xlabel!(costfig,"Iterations")
    ylabel!(costfig,"Cost")
 
    # changefig = plot(ϵ[:,1], ϵ[:,3], yaxis=:log, lab="")
 
-   relerrorfig = plot([0;ϵₗ[:,1]], [1.;ϵₗ[:,4]], yaxis=:log, lab="")
+   # relerrorfig = plot([0;ϵₗ[:,1]], [1.;ϵₗ[:,4]], yaxis=:log, lab="Pre-steps")
+   #
+   # plot!(relerrorfig, [L;ϵ₁[:,1]], [relerror;ϵ₁[:,4]], yaxis=:log, lab="a₁")
 
-   plot!(relerrorfig, [L;ϵ₁[:,1]], [relerror;ϵ₁[:,4]], yaxis=:log, lab="a₁")
+   relerrorfig = plot([L;ϵ₁[:,1]], [relerror;ϵ₁[:,4]], yaxis=:log, lab="a₁")
 
    plot!(relerrorfig, [L;ϵ₂[:,1]], [relerror;ϵ₂[:,4]], yaxis=:log, lab="a₂")
 
-   plot!(relerrorfig, [L;ϵ₃[:,1]], [relerror;ϵ₃[:,4]], yaxis=:log, lab="a₃")
+   plot!(relerrorfig, [L;ϵ₃[:,1]], [relerror;ϵ₃[:,4]], yaxis=:log, color = cur_colors[4], lab="a₃")
+
+   plot!(relerrorfig,[0;ϵₗ[:,1]], [1.;ϵₗ[:,4]], yaxis=:log, color = cur_colors[3], lab="Pre-steps")
    xlabel!(relerrorfig,"Iterations")
    ylabel!(relerrorfig,L"\epsilon_{rel}")
 
-   convfig = plot([0;ϵ₂[:,1] .- L], ones(length(rs[2])+1),lab="q=1")
+   # convfig = plot([0;ϵ₂[:,1] .- L], ones(length(rs[2])+1),lab="q=1")
+   #
+   # scatter!(convfig,ϵ₁[:,1] .- L,cRate₁, markersize=8, lab="a₁")
 
-   scatter!(convfig,ϵ₁[:,1] .- L,cRate₁, markersize=8, lab="a₁")
+   convfig = scatter(ϵ₁[:,1] .- L,cRate₁, markersize=8, lab="a₁")
 
    scatter!(convfig,ϵ₂[:,1] .- L, cRate₂, markersize=7, lab="a₂")
 
-   scatter!(convfig,ϵ₃[:,1] .- L, cRate₃, markersize=6, lab="a₃")
+   scatter!(convfig,ϵ₃[:,1] .- L, cRate₃, markersize=6, color = cur_colors[4], lab="a₃")
 
+   plot!(convfig,[0;ϵ₂[:,1] .- L], ones(length(rs[2])+1),color = cur_colors[3], lab="q=1")
    xlims!( (0,maximum(length.(rs))) )
    xlabel!(convfig,"Iterations")
    ylabel!(convfig,"q")

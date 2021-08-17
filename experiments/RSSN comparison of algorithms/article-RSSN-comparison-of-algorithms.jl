@@ -16,7 +16,7 @@ function main()
 
    λ = 1e-6
 
-   # path = "results/article-RSSN-comparison-of-algorithms-2020-12-23-18-16-52/"
+   # path = "results/article-RSSN-comparison-of-algorithms-2021-06-14-11-03-44/"
    # path2 = "results/report-RSSN-comparison-of-algorithms-2020-08-25-16-32-09/"
    # path3 = "results/report-RSSN-comparison-of-algorithms-2020-08-26-11-14-08/"
    # path4 = "results/report-RSSN-comparison-of-algorithms-2020-08-12-12-01-07/"
@@ -24,7 +24,7 @@ function main()
    # S2 Problems
 
    run_RSSN_comparison_algorithms_S2(λ)
-   
+
    process_RSSN_comparison_algorithms_S2(λ,view_result=false)  #,path=path)
 
    # P(3)

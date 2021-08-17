@@ -18,11 +18,11 @@ function main()
    δ = 0.1
    ViewResults=false
 
-   # path = "results/report-RSSN-inexact-semismooth-Newton-S2-2020-08-19-13-12-23/"
+   # path = "results/article-RSSN-inexact-semismooth-Newton-S2-2020-12-24-15-37-33/"
 
-   run_RSSN_inexact_S2(α,δ)
+   # run_RSSN_inexact_S2(α,δ)
 
-   process_RSSN_inexact_S2(view_result=ViewResults)#,path=path)
+   process_RSSN_inexact_S2(view_result=ViewResults)  #,path=path)
 
    exp_end()
 
